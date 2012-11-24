@@ -5,11 +5,20 @@
 //  Created by Matt Gallagher on 27/09/08.
 //  Copyright 2008 Matt Gallagher. All rights reserved.
 //
-//  Permission is given to use this source code file, free of charge, in any
-//  project, commercial or otherwise, entirely at your risk, with the condition
-//  that any redistribution (in part or whole) of source code must retain
-//  this copyright and permission notice. Attribution in compiled projects is
-//  appreciated but not required.
+//  This software is provided 'as-is', without any express or implied
+//  warranty. In no event will the authors be held liable for any damages
+//  arising from the use of this software. Permission is granted to anyone to
+//  use this software for any purpose, including commercial applications, and to
+//  alter it and redistribute it freely, subject to the following restrictions:
+//
+//  1. The origin of this software must not be misrepresented; you must not
+//     claim that you wrote the original software. If you use this software
+//     in a product, an acknowledgment in the product documentation would be
+//     appreciated but is not required.
+//  2. Altered source versions must be plainly marked as such, and must not be
+//     misrepresented as being the original software.
+//  3. This notice may not be removed or altered from any source
+//     distribution.
 //
 #define SHOUTCAST_METADATA
 
@@ -20,7 +29,7 @@
 #endif
 #else
 #import <Cocoa/Cocoa.h>
-#endif TARGET_OS_IPHONE			
+#endif // TARGET_OS_IPHONE
 
 #import <Foundation/Foundation.h>
 #include <pthread.h>
@@ -134,6 +143,7 @@ extern NSString * const ASUpdateMetadataNotification;
 	bool inuse[kNumAQBufs];			// flags to indicate that a buffer is still in use
 	NSInteger buffersUsed;
 	NSDictionary *httpHeaders;
+	NSString *fileExtension;
 	
 	AudioStreamerState state;
 	AudioStreamerStopReason stopReason;
@@ -168,6 +178,9 @@ extern NSString * const ASUpdateMetadataNotification;
 	double packetDuration;		// sample rate times frames per packet
 	double lastProgress;		// last calculated progress point
 	UInt32 numberOfChannels;	// Number of audio channels in the stream (1 = mono, 2 = stereo)
+#if TARGET_OS_IPHONE
+	BOOL pausedByInterruption;
+#endif
 
 #ifdef SHOUTCAST_METADATA
 	BOOL foundIcyStart;
@@ -189,6 +202,7 @@ extern NSString * const ASUpdateMetadataNotification;
 @property (readonly) double duration;
 @property (readwrite) UInt32 bitRate;
 @property (readonly) NSDictionary *httpHeaders;
+@property (copy,readwrite) NSString *fileExtension;
 @property (readonly) UInt32 numberOfChannels;
 @property (assign, getter=isMeteringEnabled) BOOL meteringEnabled;
 @property (readonly) BOOL vbr;

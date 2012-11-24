@@ -5,11 +5,20 @@
 //  Created by Matt Gallagher on 28/10/08.
 //  Copyright Matt Gallagher 2008. All rights reserved.
 //
-//  Permission is given to use this source code file, free of charge, in any
-//  project, commercial or otherwise, entirely at your risk, with the condition
-//  that any redistribution (in part or whole) of source code must retain
-//  this copyright and permission notice. Attribution in compiled projects is
-//  appreciated but not required.
+//  This software is provided 'as-is', without any express or implied
+//  warranty. In no event will the authors be held liable for any damages
+//  arising from the use of this software. Permission is granted to anyone to
+//  use this software for any purpose, including commercial applications, and to
+//  alter it and redistribute it freely, subject to the following restrictions:
+//
+//  1. The origin of this software must not be misrepresented; you must not
+//     claim that you wrote the original software. If you use this software
+//     in a product, an acknowledgment in the product documentation would be
+//     appreciated but is not required.
+//  2. Altered source versions must be plainly marked as such, and must not be
+//     misrepresented as being the original software.
+//  3. This notice may not be removed or altered from any source
+//     distribution.
 //
 
 #import "iPhoneStreamingPlayerAppDelegate.h"
@@ -40,12 +49,11 @@
 	[button.layer removeAllAnimations];
 	if (!image)
 	{
-		[button setImage:[UIImage imageNamed:@"playbutton.png"] forState:0];
+		[button setImage:[UIImage imageNamed: @"playbutton.png"] forState:0];
 	}
 	else
 	{
 		[button setImage:image forState:0];
-	
 		if ([button.currentImage isEqual:[UIImage imageNamed:@"loadingbutton.png"]])
 		{
 			[self spinButton];
@@ -186,7 +194,7 @@
 	MPVolumeView *volumeView = [[[MPVolumeView alloc] initWithFrame:volumeSlider.bounds] autorelease];
 	[volumeSlider addSubview:volumeView];
 	[volumeView sizeToFit];
-	
+
 	[self setButtonImage:[UIImage imageNamed:@"playbutton.png"]];
 	
 	levelMeterView = [[LevelMeterView alloc] initWithFrame:CGRectMake(10.0, 310.0, 300.0, 60.0)];
@@ -272,12 +280,13 @@
 //
 - (IBAction)buttonPressed:(id)sender
 {
-	if ([button.currentImage isEqual:[UIImage imageNamed:@"playbutton.png"]] || [button.currentImage isEqual:[UIImage imageNamed:@"pausebutton.png"]])
+	if ([button.currentImage isEqual:[UIImage imageNamed:@"playbutton.png"]] ||
+		  [button.currentImage isEqual:[UIImage imageNamed:@"pausebutton.png"]])
 	{
 		[downloadSourceField resignFirstResponder];
 		
 		[self createStreamer];
-		[self setButtonImage:[UIImage imageNamed:@"loadingbutton.png"]];
+		[self setButtonImage:[UIImage imageNamed: @"loadingbutton.png"]];
 		[streamer start];
 	}
 	else
