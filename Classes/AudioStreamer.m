@@ -1521,8 +1521,6 @@ cleanup:
 				CFHTTPMessageRef myResponse = (CFHTTPMessageRef)CFReadStreamCopyProperty(stream, kCFStreamPropertyHTTPResponseHeader);
 				UInt32 statusCode = CFHTTPMessageGetResponseStatusCode(myResponse);
 				
-				//CFStringRef myStatusLine = CFHTTPMessageCopyResponseStatusLine(myResponse);
-				
 				if (statusCode == 200)		// "OK" (this is true even for ICY)
 				{
 					// check if this is a ICY 200 OK response
@@ -1545,42 +1543,12 @@ cleanup:
 							
 						} else {
 							// Not an ICY response
-							/*NSString *metaInt;
-							metaInt = (NSString *) CFHTTPMessageCopyHeaderFieldValue(myResponse, CFSTR("Icy-Metaint"));	
-							metaDataInterval = [metaInt intValue];
-							[metaInt release];
-							if (metaInt)
-							{
-								parsedHeaders = YES;
-							}*/
 							NSString *metaInt;
 							NSString *contentType;
 							NSString *icyBr;
 							metaInt = (NSString *) CFHTTPMessageCopyHeaderFieldValue(myResponse, CFSTR("Icy-Metaint"));
 							contentType = (NSString *) CFHTTPMessageCopyHeaderFieldValue(myResponse, CFSTR("Content-Type"));
 							icyBr = (NSString *) CFHTTPMessageCopyHeaderFieldValue(myResponse, CFSTR("icy-br"));
-							/*if (contentType) 
-							{
-								// only if we haven't already set a content-type
-								if (!myData.streamContentType)
-								{
-									NSLog(@"Stream Content-Type: %@", contentType);
-									myData.streamContentType = contentType;
-									// if this is not an mp3 stream we need to restart the audio queue
-									if ([myData.streamContentType caseInsensitiveCompare:@"audio/mpeg"] != NSOrderedSame)
-									{
-										[myData restartAudioQueue];
-									}								
-								}
-							}*/
-							/*
-							if (bitRate == 0 && icyBr)
-							{
-								bitRate = [icyBr intValue];
-								NSLog(@"Stream Bitrate: %@", icyBr);
-								[myData updateBitrate:[icyBr intValue]];
-							}
-							*/
 							metaDataInterval = [metaInt intValue];
 							if (metaInt)
 							{
@@ -1638,30 +1606,7 @@ cleanup:
 								//NSLog(@"ICY MetaInt: %d", metaDataInterval);
 							}
 						}
-/*						if ([[lineItems objectAtIndex:0] caseInsensitiveCompare:@"icy-br"] == NSOrderedSame)
-						{
-							uint32_t icybr = [[lineItems objectAtIndex:1] intValue];
-							if (bitRate == 0) {
-								bitRate = icybr;
-								NSLog(@"ICY BR: %d", icybr);
-								[myData updateBitrate:icybr];										
-							}
-						}
-						if ([[lineItems objectAtIndex:0] caseInsensitiveCompare:@"Content-Type"] == NSOrderedSame)
-						{
-							NSLog(@"ICY Stream Content-Type: %@", [lineItems objectAtIndex:1]);
-							// only if we haven't already set the content type
-							if (!myData.streamContentType)
-							{
-								myData.streamContentType = [lineItems objectAtIndex:1];
-								// if this is not an mp3 stream we need to restart the audio queue
-								if ([myData.streamContentType caseInsensitiveCompare:@"audio/mpeg"] != NSOrderedSame)
-								{
-									[myData restartAudioQueue];
-								}										
-							}
-						}
-	*/					
+						
 						// this is the end of a line, the new line starts in 2
 						lineStart = streamStart+2; // (c3)
 						
@@ -1734,7 +1679,6 @@ cleanup:
 					lengthNoMetaData += 1;
 				} // end for
 				
-				// pthread_mutex_unlock(&mutexMeta);
 			}	// end if parsedHeaders
 #endif
 		}
