@@ -363,14 +363,14 @@
  StreamTitle='Kim Sozzi / Amuka / Livvi Franc - Secret Love / It's Over / Automatik',
  StreamUrl='&artist=Kim%20Sozzi%20%2F%20Amuka%20%2F%20Livvi%20Franc&title=Secret%20Love%20%2F%20It%27s%20Over%20%2F%20Automatik&album=&duration=1133453&songtype=S&overlay=no&buycd=&website=&picture=',
 
- Format is generally "Artist hypen Title" although servers may deliver only one. This code assumes 1 field is artist.
+ Format is generally "Artist - Album - Title", "Artist - Title", or "Title"
  */
 - (void)metadataChanged:(NSNotification *)aNotification
 {
-	NSString *streamArtist;
-	NSString *streamTitle;
-	NSString *streamAlbum;
-    //NSLog(@"Raw meta data = %@", [[aNotification userInfo] objectForKey:@"metadata"]);
+	NSString *streamArtist = nil;
+	NSString *streamTitle = nil;
+	NSString *streamAlbum = nil;
+    NSLog(@"Raw meta data = %@", [[aNotification userInfo] objectForKey:@"metadata"]);
           
 	NSArray *metaParts = [[[aNotification userInfo] objectForKey:@"metadata"] componentsSeparatedByString:@";"];
 	NSString *item;
@@ -387,22 +387,15 @@
 	NSString *streamString = [[hash objectForKey:@"StreamTitle"] stringByReplacingOccurrencesOfString:@"'" withString:@""];
 	
 	NSArray *streamParts = [streamString componentsSeparatedByString:@" - "];
-	if ([streamParts count] > 0) {
+	if (streamParts.count >= 3) {
 		streamArtist = [streamParts objectAtIndex:0];
-	} else {
-		streamArtist = @"";
-	}
-	// this looks odd but not every server will have all artist hyphen title
-	if ([streamParts count] >= 2) {
+		streamAlbum = [streamParts objectAtIndex:1];
+		streamTitle = [streamParts objectAtIndex:2];
+	} else if(streamParts.count == 2) {
+		streamArtist = [streamParts objectAtIndex:0];
 		streamTitle = [streamParts objectAtIndex:1];
-		if ([streamParts count] >= 3) {
-			streamAlbum = [streamParts objectAtIndex:2];
-		} else {
-			streamAlbum = @"N/A";
-		}
-	} else {
-		streamTitle = @"";
-		streamAlbum = @"";
+	} else if(streamParts.count == 1) {
+		streamTitle = [streamParts objectAtIndex:0];
 	}
 	NSLog(@"%@ by %@ from %@", streamTitle, streamArtist, streamAlbum);
 
