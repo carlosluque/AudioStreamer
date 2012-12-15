@@ -1592,6 +1592,12 @@ cleanup:
 						// get the full string
 						NSString *fullString = [[[NSString alloc] initWithBytes:bytes length:streamStart encoding:NSUTF8StringEncoding] autorelease];
 						
+                        // some radio stations stream the metadata Latin1 encoded instead of utf8
+                        // encode string with Latin1 if no utf8 string is available
+                        if(fullString == nil){
+                            fullString =[[[NSString alloc] initWithBytes:bytes length:streamStart encoding:NSISOLatin1StringEncoding] autorelease];
+                        }
+                        
 						// get the substring for this line
 						NSString *line = [fullString substringWithRange:NSMakeRange(lineStart, (streamStart-lineStart))];
 						//NSLog(@"Header Line: %@. Length: %d", line, [line length]);
