@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0743608016D1750D005632D8 /* plaquita_Playa_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 0743607D16D1750D005632D8 /* plaquita_Playa_ok.png */; };
+		0743608116D1750D005632D8 /* PirataFM_AppStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 0743607E16D1750D005632D8 /* PirataFM_AppStore.png */; };
+		0743608216D1750D005632D8 /* plaquita_Cancun_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 0743607F16D1750D005632D8 /* plaquita_Cancun_ok.png */; };
+		0743608616D17549005632D8 /* audio_fondo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0743608316D17549005632D8 /* audio_fondo.png */; };
+		0743608716D17549005632D8 /* audio_fondo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0743608416D17549005632D8 /* audio_fondo@2x.png */; };
+		0743608816D17549005632D8 /* audio_fondo-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0743608516D17549005632D8 /* audio_fondo-568h@2x.png */; };
 		1D3623260D0F684500981E51 /* iPhoneStreamingPlayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iPhoneStreamingPlayerAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -33,6 +39,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0743607D16D1750D005632D8 /* plaquita_Playa_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plaquita_Playa_ok.png; sourceTree = "<group>"; };
+		0743607E16D1750D005632D8 /* PirataFM_AppStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PirataFM_AppStore.png; sourceTree = "<group>"; };
+		0743607F16D1750D005632D8 /* plaquita_Cancun_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plaquita_Cancun_ok.png; sourceTree = "<group>"; };
+		0743608316D17549005632D8 /* audio_fondo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_fondo.png; sourceTree = "<group>"; };
+		0743608416D17549005632D8 /* audio_fondo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_fondo@2x.png"; sourceTree = "<group>"; };
+		0743608516D17549005632D8 /* audio_fondo-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_fondo-568h@2x.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* iPhoneStreamingPlayerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneStreamingPlayerAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iPhoneStreamingPlayerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneStreamingPlayerAppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0743607C16D174F1005632D8 /* imagenes_player */ = {
+			isa = PBXGroup;
+			children = (
+				0743607D16D1750D005632D8 /* plaquita_Playa_ok.png */,
+				0743607E16D1750D005632D8 /* PirataFM_AppStore.png */,
+				0743607F16D1750D005632D8 /* plaquita_Cancun_ok.png */,
+				0743608316D17549005632D8 /* audio_fondo.png */,
+				0743608416D17549005632D8 /* audio_fondo@2x.png */,
+				0743608516D17549005632D8 /* audio_fondo-568h@2x.png */,
+			);
+			name = imagenes_player;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +158,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0743607C16D174F1005632D8 /* imagenes_player */,
 				FCB038FE1224369600E538F7 /* loadingbutton@2x.png */,
 				FCB038FF1224369600E538F7 /* pausebutton@2x.png */,
 				FCB039001224369600E538F7 /* playbutton@2x.png */,
@@ -232,6 +258,12 @@
 				FCB039041224369600E538F7 /* playbutton@2x.png in Resources */,
 				FCB039051224369600E538F7 /* stopbutton@2x.png in Resources */,
 				C90A804C14134C9400810E93 /* MainWindow.xib in Resources */,
+				0743608016D1750D005632D8 /* plaquita_Playa_ok.png in Resources */,
+				0743608116D1750D005632D8 /* PirataFM_AppStore.png in Resources */,
+				0743608216D1750D005632D8 /* plaquita_Cancun_ok.png in Resources */,
+				0743608616D17549005632D8 /* audio_fondo.png in Resources */,
+				0743608716D17549005632D8 /* audio_fondo@2x.png in Resources */,
+				0743608816D17549005632D8 /* audio_fondo-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
